@@ -16,6 +16,7 @@ public class MusicLibraryTests {
 	
 	private MusicTrack track5 = new DigitalTrack("Time is running out","3:56", "Muse", "Absolution", "2003", "320");                     
 	private MusicTrack track6 = new DigitalTrack("Tiptoe", "3:14", "Imagine Dragons", "Night Visions", "2012", "320");
+	private MusicTrack track7 = new DigitalTrack("Tiptoe", "3:14", "Imagine Dragons", "Night Visions", "2012", "320");
 
 	@Before
 	public void executeBeforeEachTest() {
@@ -79,6 +80,32 @@ public class MusicLibraryTests {
 		expected.get(19).add(track6);
 		assertEquals(expected, titleBucket.getBuckets());
 		
+	}
+	
+	@Test
+	public void addItemTitleDupTest() {
+		TitleBucket titleBucket = new TitleBucket();
+		titleBucket.addItem(track6);
+		titleBucket.addItem(track7);
+		ArrayList<ArrayList<MusicTrack>> expected = new ArrayList<ArrayList<MusicTrack>>();
+		for(int i = 0; i < 26; i++) {
+			expected.add(new ArrayList<MusicTrack>());
+		}
+		expected.get(19).add(track6);
+		assertEquals(expected, titleBucket.getBuckets());
+	}
+	
+	@Test 
+	public void addItemArtistDupTest() {
+		ArtistBucket artistBucket = new ArtistBucket();
+		artistBucket.addItem(track6);
+		artistBucket.addItem(track7);
+		ArrayList<ArrayList<MusicTrack>> expected = new ArrayList<ArrayList<MusicTrack>>();
+		for(int i = 0; i < 26; i++) {
+			expected.add(new ArrayList<MusicTrack>());
+		}
+		expected.get(8).add(track6);
+		assertEquals(expected, artistBucket.getBuckets());
 	}
 	
 	@After

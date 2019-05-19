@@ -25,7 +25,7 @@ public class ArtistBucket implements BucketInterface{
 				if(newName.compareTo(name)<0) {
 					bucket.add(i, musicTrack);
 					break;
-				}if(i==bucket.size()-1) {
+				}if(i==bucket.size()-1 && newName.compareTo(name)!=0) {
 					bucket.add(musicTrack);
 					break;
 				}
